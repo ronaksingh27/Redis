@@ -1,0 +1,5 @@
+kernel buffer is full : buffer in the kernel (which temporarily holds data before it's written to its final destination, such as a file or network socket) has reached its capacity
+
+Prompt for learning :- 
+Give the big picture of what the following code is doing and then dive into the details and explain each part with easy, relevant examples
+
