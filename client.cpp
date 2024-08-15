@@ -52,16 +52,21 @@ static int32_t query(int fd, const char* text)
 
 	uint32_t len = (uint32_t)strlen(text);
 	if( len > k_max_msg ) return -1;
-	printf("len : %d\n",len);
+//	printf("len : %d\n",len);
 	
 
 	//write part
 	char wbuf[4 + k_max_msg ];
 	memcpy(wbuf,&len,4);
+//	 printf("wbuf : %s\n",wbuf);
+
 	memcpy(&wbuf[4],text,len);
+//	 printf("wbuf : %s\n",wbuf);
+
 	if( int32_t err = write_all(fd,wbuf,len+4) ){
 		return err;	
 	}
+//	printf("wbuf : %s\n",wbuf);
 
 	//read part
 	char rbuf[4 + k_max_msg + 1 ];
@@ -76,10 +81,10 @@ static int32_t query(int fd, const char* text)
 		return err;
     	}	
 	
-	printf("len : %d\n",len);
+//	printf("len : %d\n",len);
 
 	memcpy(&len, rbuf, 4);  // assume little endian
-   	printf("len : %d\n",len);
+//   	printf("len : %d\n",len);
 	 if (len > k_max_msg) {
         	msg("too long");
      	  	 return -1;

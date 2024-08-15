@@ -35,6 +35,8 @@ static int32_t one_request(int connfd)
 		{
 			msg("read() error" );
 		}
+		
+		return err;
 	}
 
 	//extract and validate the message length
@@ -100,7 +102,7 @@ static int32_t read_full( int connfd , char* buff , int n )
 	{
 		/*rv indicated the number of bytes successfully read from file descriptor*/ 
 		ssize_t rv = read(connfd,buff,n);
-		if( rv < 0 ) 
+		if( rv <= 0 ) 
 		{
 			return -1;
 		}
@@ -118,7 +120,7 @@ static int32_t write_all( int connfd , const char* buff , int n )
 	while( n > 0 ) 
 	{
 		ssize_t rv = write(connfd,buff,n);
-		if( rv < 0 ) 
+		if( rv <= 0 ) 
 		{
 			return -1;
 		}
@@ -168,7 +170,7 @@ int main() {
             continue;   // error
         }
 
-        do_something(connfd);
+        //do_something(connfd);
 	
 	//only serves one clint connection at once
 	while( true )
@@ -187,4 +189,6 @@ int main() {
     close(fd);
     return 0;
 }
+
+
 
