@@ -10,7 +10,7 @@
 #include <cassert>
 
 
-const size_t k_msg_max = 4096;
+const size_t k_max_msg = 4096;
 
 static void msg( const char* msg);
 static int32_t read_full( int connfd , char* buff , int n );
@@ -20,7 +20,7 @@ static int32_t one_request(int connfd)
 {
 
 	//initializing buffer
-	char rbuf[4 + k_msg_max + 1 ];
+	char rbuf[4 + k_max_msg + 1 ];
 	
 	//read the message header
 	errno = 0;
@@ -42,7 +42,7 @@ static int32_t one_request(int connfd)
 	//extract and validate the message length
 	uint32_t len = 0;
 	memcpy(&len,rbuf,4);//extracts the lenght of message
-	if( len > k_msg_max )
+	if( len > k_max_msg )
 	{
 		msg("too long");
 		return -1;

@@ -6,3 +6,5 @@ Give the big picture of what the following code is doing and then dive into the 
 
 for server : first read_full then write_all
 for client : first write_all then read_full
+
+To change all occurences of a word in a file : " :%s/old_word/new_word/g "
