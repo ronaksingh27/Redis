@@ -8,3 +8,10 @@ for server : first read_full then write_all
 for client : first write_all then read_full
 
 To change all occurences of a word in a file : " :%s/old_word/new_word/g "
+
+To edit committed message in git : git commit --ammend , 
+then Ctrl + O and then Enter
+then Ctrl + X
+
+Chp 05 : Event loop & NonBlocking I/O
+In event-looping , we deal with concurrent-connections in server-side network programming
